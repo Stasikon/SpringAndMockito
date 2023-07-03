@@ -9,7 +9,7 @@ import java.util.Random;
     public class Employee {
         private final String name;
         private final String surname;
-        private final int department;
+        private int department;
         private int salary;
 
         public Employee(String name, String surname) {
