@@ -19,8 +19,8 @@ public class EmployeeServiceMe implements EmployeeService {
     }
 
     @Override
-    public Employee add(String name, String surname) {
-        Employee employee = new Employee(name, surname);
+    public Employee add(String name, String surname,int department,int salary) {
+        Employee employee = new Employee(name, surname,department,salary);
         if (employeeList.contains(employee)) {
             throw new EmployeeAlreadyAddedException("Такой сотрудник уже есть");
         }
@@ -29,8 +29,8 @@ public class EmployeeServiceMe implements EmployeeService {
     }
 
     @Override
-    public Employee remove(String name, String surname) {
-        Employee employee = new Employee(name, surname);
+    public Employee remove(String name, String surname,int department,int salary) {
+        Employee employee = new Employee(name, surname,department,salary);
         if (employeeList.contains(employee)) {
             employeeList.remove(employee);
             return employee;
@@ -41,8 +41,8 @@ public class EmployeeServiceMe implements EmployeeService {
     }
 
     @Override
-    public Employee find(String name, String surname) {
-        Employee employee = new Employee(name, surname);
+    public Employee find(String name, String surname,int department,int salary) {
+        Employee employee = new Employee(name, surname,department,salary);
         if (employeeList.contains(employee)) {
             return employee;
         }

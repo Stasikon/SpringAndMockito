@@ -9,10 +9,10 @@ import java.util.Random;
     public class Employee {
         private final String name;
         private final String surname;
-        private int department;
+        private final int department;
         private int salary;
 
-        public Employee(String name, String surname) {
+        public Employee(String name, String surname,int department,int salary) {
             Random random = new Random();
             this.name = name;
             this.surname = surname;
