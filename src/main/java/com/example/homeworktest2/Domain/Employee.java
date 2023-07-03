@@ -12,7 +12,7 @@ import java.util.Random;
         private final int department;
         private int salary;
 
-        public Employee(String name, String surname,int department,int salary) {
+        public Employee(String name, String surname) {
             Random random = new Random();
             this.name = name;
             this.surname = surname;

@@ -4,6 +4,7 @@ package com.example.homeworktest2.Service;
 import com.example.homeworktest2.Domain.Employee;
 import com.example.homeworktest2.Exeption.EmployeeAlreadyAddedException;
 import com.example.homeworktest2.Exeption.EmployeeNotFoundException;
+import com.example.homeworktest2.Exeption.EmployeeStorageIsFullException;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -12,6 +13,7 @@ import java.util.*;
 @Service
 public class EmployeeServiceMe implements EmployeeService {
 
+    public static final int MAX_COUNT = 5;
     private final List<Employee> employeeList;
 
     public EmployeeServiceMe() {
@@ -20,17 +22,20 @@ public class EmployeeServiceMe implements EmployeeService {
 
     @Override
     public Employee add(String name, String surname,int department,int salary) {
-        Employee employee = new Employee(name, surname,department,salary);
+        Employee employee = new Employee(name, surname);
         if (employeeList.contains(employee)) {
             throw new EmployeeAlreadyAddedException("Такой сотрудник уже есть");
+        }
+        if (employeeList.size() >= MAX_COUNT) {
+            throw new EmployeeStorageIsFullException("Достигнута максимальная вместимость списка сотрудников, новый сотрудник не добавлен");
         }
         employeeList.add(employee);
         return employee;
     }
 
     @Override
-    public Employee remove(String name, String surname,int department,int salary) {
-        Employee employee = new Employee(name, surname,department,salary);
+    public Employee remove(String name, String surname) {
+        Employee employee = new Employee(name, surname);
         if (employeeList.contains(employee)) {
             employeeList.remove(employee);
             return employee;
@@ -41,8 +46,8 @@ public class EmployeeServiceMe implements EmployeeService {
     }
 
     @Override
-    public Employee find(String name, String surname,int department,int salary) {
-        Employee employee = new Employee(name, surname,department,salary);
+    public Employee find(String name, String surname) {
+        Employee employee = new Employee(name, surname);
         if (employeeList.contains(employee)) {
             return employee;
         }
