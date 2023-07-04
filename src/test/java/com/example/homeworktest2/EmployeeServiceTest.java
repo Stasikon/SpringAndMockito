@@ -49,21 +49,22 @@ public class EmployeeServiceTest {
     @Test
     public void testRemove() {
         employeeService.add("Tom", "Cruise", 1, 25000);
-        employeeService.remove("Tom", "Cruise");
+        employeeService.remove("Tom", "Cruise",1, 25000);
         assertEquals(0, employeeService.findAll().size());
     }
     @Test
     public void testRemoveException() {
-        assertThrows(EmployeeNotFoundException.class, () -> employeeService.remove("Tom", "Cruise"));
+        assertThrows(EmployeeNotFoundException.class, () -> employeeService.remove("Tom", "Cruise",1, 25000));
     }
     @Test
     public void testFindEmployee() {
         employeeService.add("Tony", "Stark", 1, 75000);
         employeeService.add("Piter", "Parker", 1, 35000);
-        Employee findEmployee = employeeService.find("Tony", "Stark");
+        Employee findEmployee = employeeService.find("Tony", "Stark",1, 75000);
         assertNotNull(findEmployee);
         assertEquals("Tony", findEmployee.getName());
         assertEquals("Stark", findEmployee.getSurname());
+
     }
     @Test
     public void testFindAll() {
@@ -75,9 +76,9 @@ public class EmployeeServiceTest {
         Collection<Employee> allEmployees = employeeService.findAll();
         assertEquals(4, allEmployees.size());
 
-        assertTrue(allEmployees.contains(new Employee("Pol", "Ninkiy")));
-        assertTrue(allEmployees.contains(new Employee("Ne", "Tolsty")));
-        assertTrue(allEmployees.contains(new Employee("Nina", "Kotova")));
-        assertTrue(allEmployees.contains(new Employee("Albert", "Entertain")));
+        assertTrue(allEmployees.contains(new Employee("Pol", "Ninkiy",1, 65000)));
+        assertTrue(allEmployees.contains(new Employee("Ne", "Tolsty", 1, 55000)));
+        assertTrue(allEmployees.contains(new Employee("Nina", "Kotova", 1, 30000)));
+        assertTrue(allEmployees.contains(new Employee("Albert", "Entertain", 2, 20000)));
     }
 }

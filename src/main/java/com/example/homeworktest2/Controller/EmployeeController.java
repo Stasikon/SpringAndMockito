@@ -25,12 +25,14 @@ import java.util.Collection;
             return servise.add(name, surname,department,salary);
         }
         @GetMapping("/remove")
-        public Employee  removeEmployee(@RequestParam String name,@RequestParam String surname) {
-            return servise.remove(name, surname);
+        public Employee  removeEmployee(@RequestParam String name,@RequestParam String surname,
+                                        @RequestParam Integer department,@RequestParam Integer salary) {
+            return servise.remove(name, surname,department,salary);
         }
         @GetMapping("/find")
-        public Employee findEmployee(@RequestParam String name, @RequestParam String surname) {
-            return servise.find(name, surname);
+        public Employee findEmployee(@RequestParam String name, @RequestParam String surname,
+                                     @RequestParam Integer department,@RequestParam Integer salary) {
+            return servise.find(name, surname,department,salary);
         }
         @GetMapping
         public Collection<Employee> findAll() {

@@ -17,4 +17,6 @@ public interface NewDepartmentService {
     public Optional<Employee> minDepSalary(int id);
 
     public Map<Integer, List<Employee>> departmentGrouped();
+
+
 }
