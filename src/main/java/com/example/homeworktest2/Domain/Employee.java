@@ -12,12 +12,12 @@ import java.util.Random;
         private final int department;
         private int salary;
 
-        public Employee(String name, String surname) {
+        public Employee(String name, String surname,Integer department,Integer salary) {
             Random random = new Random();
             this.name = name;
             this.surname = surname;
-            this.department = random.nextInt(5) + 1;
-            this.salary = random.nextInt(10000) + 1000;
+            this.department = department;
+            this.salary = salary;
         }
 
         public String getName() {

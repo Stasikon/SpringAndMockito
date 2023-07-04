@@ -13,7 +13,7 @@ import java.util.Optional;
 
 
     @RestController
-    @RequestMapping("/department")
+    @RequestMapping("/departmentOld")
     public class DepartmentController {
         private final DepartmentService departmentService;
 
@@ -21,22 +21,22 @@ import java.util.Optional;
             this.departmentService = departmentService;
         }
 
-        @GetMapping("/max-salary")
+        @GetMapping("/max-salaryOld")
         public Optional<Employee> maxDepSalary(@RequestParam("departmentId") Integer department) {
             return departmentService.maxDepSalary(department);
         }
 
-        @GetMapping("/min-salary")
+        @GetMapping("/min-salaryOld")
         public Optional<Employee> minDepSalary(@RequestParam("departmentID") Integer department) {
             return departmentService.minDepSalary(department);
         }
 
-        @GetMapping(value = "/all", params = {"departmentID"})
+        @GetMapping(value = "/allOld", params = {"departmentID"})
         public List<Employee> printEmployeeToDepartment(@RequestParam("departmentID") Integer department) {
             return departmentService.printEmployeeToDepartment(department);
         }
 
-        @GetMapping("/all")
+        @GetMapping("/allOld")
         public Map<Integer, List<Employee>> printAllEmployee() {
             return departmentService.printAllEmployee();
         }
